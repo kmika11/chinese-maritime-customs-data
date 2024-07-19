@@ -29,7 +29,7 @@ Ensure you have the following software and packages installed before using the s
 
 ## Scripts Overview
 ### Python Script: `curate.py`
-This script handles the bulk processing of the datasets. It includes functions for reading, cleaning, labeling, and saving the data.
+This script includes the functions for curation of the datasets. It includes functions for correctly formatting metadata, creating Dataverse datasets, uploading data files, publishing datasets, unlocking and deleting datasets.
 
 ### Jupyter Notebooks
 1. `curation_script_Chinese_Maritime_Trade_Data.ipynb`: Main notebook for processing the trade data.
@@ -58,7 +58,8 @@ This script handles the bulk processing of the datasets. It includes functions f
     - **Upload dataset datafiles**: Upload the datafiles associated with each dataset in a batch **MAKE SURE [DIRECT UPLOAD](https://guides.dataverse.org/en/latest/developers/big-data-support.html#id5) IS ENABLED IN COLLECTION**. There is a known problem with the "registering files" process in the dvuploader python library. Usually throws 500 error, but works with small number of files (eg. fewer than 40). This code (in cureate.py) is designed to  loop batches with exceptions for 500 errors. It probably isn't a great idea to just ignore 500 errors and skip to the next series, but that's part of why batching is useful here.
     - **Publish datasets**: Cells publish all datasets in a collection (or sub-collection).
     - **Unlock datasets that were locked during publish process**: It is common for datasets to get held in the "lock" process for some reason after "publish" is triggered. The fix is to run the unlock request for all files in the collection and then republish. You can either republish the whole collection with the existing code, anticipating errors for datasets that have already been successfully published. Or you can manually publish in the UI.
-    - **Create Inventories**: Combines all metadata files into one long dataframe for use as an inventory file. 
+    - **Create Inventories**: Combines all metadata files into one long dataframe for use as an inventory file.
+    - **Testing**: Towards the end of the notebook there are several cells that are descined to facilitate testing functions and workflows for one dataset or a smaller number of files. Can help with troubleshooting. Includes a function for destroying all datasets in a collection. This is irreversable and should be used with caution. 
 
 ## Common Issues and Troubleshooting
 - **File formatting**: For `..._titles.ipynb` notebooks, csv files must be properly formatted. If the encoding is funny, or there's column of values that are not aligned correctly, the `spreadsheet_maker()` will fail. It usually works to test whether a file can be read into a dataframe. If it can't then you have to manually inspect it, dpending on the error message, and go from there.
