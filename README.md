@@ -38,7 +38,7 @@ This script includes the functions for curation of the datasets. It includes fun
 4. `shanghai_returns_titles.ipynb`: Notebook specific to the Shanghai trade returns.
 5. `trade_statistics_treaty_ports_titles.ipynb`: Notebook for processing trade statistics of treaty ports.
 
-`..._titles.ipynb` notebooks are designed to preprocess the data files with labels, titles, and NER tags before curating and depositing into a Dataverse collection. Each `..._titles.ipynb` notebook includes functions that are unique to each volume, depending on ports included and the curation decisions applied to organize the files.
+The `..._titles.ipynb` notebooks are designed to preprocess the data files with labels, titles, and NER tags before curating and depositing into a Dataverse collection. Each `..._titles.ipynb` notebook includes functions that are unique to each volume, depending on ports included and the curation decisions applied to organize the files.
 
 ### Using the Jupyter Notebooks
 1. **Launch Jupyter Notebook**:
