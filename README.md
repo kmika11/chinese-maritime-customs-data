@@ -71,4 +71,4 @@ For any questions or further assistance, please contact:
 - Katie Mika, Data Services Librarian, Harvard Library
 - Email: katherine_mika@harvard.edu
 
-Refer to the README file for additional context and detailed information about the datasets and their usage.
+Refer to the Dataverse Documentation: https://github.com/kmika11/chinese-maritime-customs-data/blob/main/DataverseDocumentation_Chinese_Maritime_Trade_Collection.docx file for additional context and detailed information about the datasets and their usage.
