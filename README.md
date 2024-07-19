@@ -38,7 +38,7 @@ This script handles the bulk processing of the datasets. It includes functions f
 4. `shanghai_returns_titles.ipynb`: Notebook specific to the Shanghai trade returns.
 5. `trade_statistics_treaty_ports_titles.ipynb`: Notebook for processing trade statistics of treaty ports.
 
-"..._titles.ipynb" notebooks are designed to preprocess the data files with labels, titles, and NER tags before curating and depositing into a Dataverse collection. 
+`..._titles.ipynb` notebooks are designed to preprocess the data files with labels, titles, and NER tags before curating and depositing into a Dataverse collection. 
 
 ### Using the Jupyter Notebooks
 1. **Launch Jupyter Notebook**:
@@ -55,7 +55,7 @@ This script handles the bulk processing of the datasets. It includes functions f
     - **Create Series Batches**: Cells that chunk files for upload into batches according to dataset/series. 
     - **Initialize pyDataverse API**: Initialize pyDataverse api wiht your API key to connect to Dataverse repository.
     - **Create all datasets**: Cells that create datasets from metadata spreadsheet. For each series, create a dataset and retain status information.
-    - **Upload dataset datafiles**: Upload the datafiles associated with each dataset in a batch **MAKE SURE DIRECT UPLOAD IS ENABLED IN COLLECTION**. There is a known problem with the "registering files" process in the dvuploader python library. Usually throws 500 error, but works with small number of files (eg. fewer than 40). This code (in cureate.py) is designed to  loop batches with exceptions for 500 errors. It probably isn't a great idea to just ignore 500 errors and skip to the next series, but that's part of why batching is useful here.
+    - **Upload dataset datafiles**: Upload the datafiles associated with each dataset in a batch **MAKE SURE [DIRECT UPLOAD](https://guides.dataverse.org/en/latest/developers/big-data-support.html#id5) IS ENABLED IN COLLECTION**. There is a known problem with the "registering files" process in the dvuploader python library. Usually throws 500 error, but works with small number of files (eg. fewer than 40). This code (in cureate.py) is designed to  loop batches with exceptions for 500 errors. It probably isn't a great idea to just ignore 500 errors and skip to the next series, but that's part of why batching is useful here.
     - **Publish datasets**: Cells publish all datasets in a collection (or sub-collection).
     - **Unlock datasets that were locked during publish process**: It is common for datasets to get held in the "lock" process for some reason after "publish" is triggered. The fix is to run the unlock request for all files in the collection and then republish. You can either republish the whole collection with the existing code, anticipating errors for datasets that have already been successfully published. Or you can manually publish in the UI.
     - **Create Inventories**: Combines all metadata files into one long dataframe for use as an inventory file. 
